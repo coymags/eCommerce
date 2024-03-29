@@ -1,16 +1,23 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { IoPersonOutline } from "react-icons/io5"
+import { IoNavigateCircle, IoPersonOutline } from "react-icons/io5"
+import { useNavigate } from 'react-router-dom'
 
 function Profile() {
 
     const [storageData, setStorageData] = useState()
+    const navigate = useNavigate()
 
     //Getting data from local storage
     useEffect(() => {
         const localData = JSON.parse(localStorage.getItem('user'))
         setStorageData(localData)
     }, [])
+
+    function handleClick() {
+        localStorage.removeItem('user')
+        navigate('/home')
+    }
   return (
     <>
         <div className='flex flex-col w-full h-screen overflow-auto'>
@@ -20,10 +27,10 @@ function Profile() {
                 </div>
                 <div className='flex flex-col p-2 w-[30%]'>
                     <h1>Welcome!</h1>
-                    <h1 className=' overflow-hidden text-xs truncate hover:overflow-visible  hover:bg-white hover:border-2 hover:border-black hover:flex-wrap md:text-[1rem]'>{storageData[0].email}</h1>
+                    <h1 className=' overflow-hidden text-xs truncate hover:overflow-visible  hover:bg-white hover:border-2 hover:border-black hover:flex-wrap md:text-[1rem]'>{'My Profile'}</h1>
                 </div>
                 <div className=' flex items-end justify-end w-[40%] h-[8rem] p-2'>
-                    <h1>Log-out</h1>
+                    <h1 className='font-bold ' onClick={handleClick}>Log-out</h1>
                 </div>
             </div>
             <div className='flex flex-col w-full h-[31.5rem] p-5 font-bold'>

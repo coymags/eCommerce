@@ -20,7 +20,10 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/profile' element={<Profile/>}/>
         </Routes>
+
+        {/*Botton navigation */}
         <BottomNav/>
+        
       </BrowserRouter>
     </>
   )
