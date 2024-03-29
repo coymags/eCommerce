@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from "./components/Navbar"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
@@ -12,12 +13,15 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      {/*<Home/>*/}
-      {/*<Navbar />*/}
-      {/*<Profile/>*/}
-      {/*<Login/>*/}
-      {/*<Signup/>*/}
+      <BrowserRouter>
+        <Routes>
+          <Route path='/home' element={<Navbar/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+        </Routes>
+        <BottomNav/>
+      </BrowserRouter>
     </>
   )
 }

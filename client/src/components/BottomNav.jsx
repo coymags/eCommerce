@@ -3,8 +3,21 @@ import { IoHomeOutline } from "react-icons/io5"
 import { IoMdNotificationsOutline } from "react-icons/io"
 import { IoPersonOutline } from "react-icons/io5"
 import { FiShoppingCart } from "react-icons/fi"
+import { useNavigate } from 'react-router-dom'
 
 function BottomNav() {
+
+    const navigate = useNavigate()
+
+    function handleClick(){
+        const storageData = JSON.parse(localStorage.getItem('user'))
+        if (storageData) {
+            console.log('navigate to profile')
+        } else {
+            navigate('/login')
+        }
+    }
+
   return (
     <>
         <div className='fixed bottom-0 flex items-center justify-between w-full h-[3rem] border-t-2 border-gray-300 bg-white'>
@@ -21,7 +34,7 @@ function BottomNav() {
             </div>
             
             <div className='flex items-center justify-center w-full'>
-                <IoPersonOutline size={20} className=' hover:size-8'/>
+                <IoPersonOutline size={20} className=' hover:size-8' onClick={handleClick}/>
             </div>
         </div>
     </>

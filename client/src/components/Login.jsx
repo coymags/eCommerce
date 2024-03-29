@@ -2,11 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import { FaEye, FaEyeSlash} from "react-icons/fa"
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 function Login() {
+
+    //Navigation variable
+    const navigate = useNavigate()
 
     //Hook to toggle Authentication error for email and password
     const [emailError, setEmailError] = useState(false)
@@ -75,6 +79,9 @@ function Login() {
                     {emailError ? <div className='flex items-center justify-center mt-4 font-bold '>
                         <h1 className='text-red-600 '>Check Email and Password carefully</h1>
                     </div>: null}
+                    <div className='flex items-center justify-center'>
+                        <h1>Don't have an account yet? <span className='text-blue-600 hover:cursor-pointer' onClick={() => navigate('/signup')}>Sign-up</span></h1>
+                    </div> 
                 </form>
             </div>
         </div>
