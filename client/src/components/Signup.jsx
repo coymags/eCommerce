@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash} from "react-icons/fa"
 import { useState } from 'react'
 import useStore from '../../data/Store'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
 
@@ -10,6 +11,9 @@ function Signup() {
   const [toggleRePass, setToggleRePass] = useState(true)
   const [passWrong, setPassWrong] = useState(false)
   const [regSuccess, setRegSuccess] = useState(false)
+
+  //Navigation variable
+  const navigate = useNavigate()
 
   // useStore variable
   const {resetForm,  RegisterInput, setRegisterInput } = useStore()
@@ -95,6 +99,9 @@ function Signup() {
                 <h1 className='font-bold text-black '>Registration Success</h1>
                 <h1 className='text-blue-700 underline'>Login</h1>
               </div> : null}
+              <div className='flex items-center justify-center '>
+                <h1>Already have an account? <span className='text-blue-600 hover:cursor-pointer' onClick={() => navigate('/login')}>Login</span></h1>
+              </div>
             </form>
           </div>
       </div>
